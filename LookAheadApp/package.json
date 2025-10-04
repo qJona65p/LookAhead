@@ -1,0 +1,32 @@
+{
+  "name": "lookaheadapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@shopify/react-native-skia": "^2.2.21",
+    "babel-preset-expo": "^54.0.3",
+    "eas-cli": "^16.20.0",
+    "expo": "~54.0.12",
+    "expo-build-properties": "^1.0.9",
+    "expo-dev-client": "~6.0.13",
+    "expo-status-bar": "~3.0.8",
+    "react": "19.1.0",
+    "react-native": "0.81.4",
+    "react-native-reanimated": "~4.1.1",
+    "react-native-vision-camera": "^4.7.2",
+    "react-native-vision-camera-face-detector": "^1.8.9",
+    "react-native-worklets-core": "^1.6.2"
+  },
+  "devDependencies": {
+    "@react-native-community/cli": "latest",
+    "@types/react": "~19.1.10",
+    "typescript": "~5.9.2"
+  },
+  "private": true
+}
