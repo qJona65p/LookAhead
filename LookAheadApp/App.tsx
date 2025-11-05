@@ -1,6 +1,6 @@
-import React from 'react';
 import { StyleSheet } from 'react-native';
 import CameraScreen from './CameraScreen';
+import React from 'react';
 
 export default function App() {
   return (
