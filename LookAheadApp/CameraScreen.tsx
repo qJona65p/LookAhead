@@ -103,8 +103,6 @@ export default function CameraScreen() {
         const faceWidth = eyeDistance * 3.5;
         const faceHeight = faceWidth * 1.3;
 
-        const scale = faceWidth / 300;
-
         const mirroredX = (x: number) => mirrorX(x);
 
         // Hat

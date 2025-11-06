@@ -13,7 +13,7 @@
     "babel-preset-expo": "^54.0.3",
     "eas-cli": "^16.20.0",
     "expo": "^54.0.22",
-    "expo-build-properties": "^1.0.9",
+    "expo-build-properties": "~1.0.9",
     "expo-dev-client": "~6.0.17",
     "expo-status-bar": "~3.0.8",
     "react": "19.1.0",
