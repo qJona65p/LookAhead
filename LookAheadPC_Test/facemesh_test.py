@@ -50,7 +50,7 @@ with mp_face_mesh.FaceMesh(
                 landmark_drawing_spec=None,
                 connection_drawing_spec=mp_drawing_styles
                     .get_default_face_mesh_iris_connections_style())
-        cv2.imwrite('/tmp/annotated_image' + str(idx) + '.png', annotated_image)
+        cv2.imwrite('tmp/annotated_image' + str(idx) + '.png', annotated_image)
 
 # For webcam input:
 drawing_spec = mp_drawing.DrawingSpec(thickness=1, circle_radius=1)

@@ -14,14 +14,13 @@ FILTROS = [
     {
         "mask_path": "Filtros/Filtro1.png",
         "csv_path": "Filtros/eyes.csv",
-        "blend_mode": "normal"  # Ideal para sombras y maquillaje
+        "blend_mode": "normal"
     },
     {
         "mask_path": "Filtros/Filtro3.png",
         "csv_path": "Filtros/lips.csv",
-        "blend_mode": "soft_light"  # Ideal para iluminación sutil
+        "blend_mode": "soft_light"
     }
-    # Agrega más filtros aquí...
 ]
 
 mp_face_mesh = mp.solutions.face_mesh
@@ -234,24 +233,35 @@ if not filtros_cargados:
     print("No se cargaron filtros. Verifica las rutas.")
     exit()
 
-def procesar_imagen(img_paths):
-    for img_path in img_paths:
-        face_mesh = mp_face_mesh.FaceMesh(
-            max_num_faces=1,
-            refine_landmarks=True,
-            min_detection_confidence=0.5,
-            min_tracking_confidence=0.5,
-            static_image_mode=True
-        )
-        img = cv2.imread(img_path)
-        h, w, _ = img.shape
+# --- Iniciar cámara ---
+cap = cv2.VideoCapture(0)
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+
+with mp_face_mesh.FaceMesh(
+    max_num_faces=1,
+    refine_landmarks=True,
+    min_detection_confidence=0.5,
+    min_tracking_confidence=0.5,
+    static_image_mode=False
+) as face_mesh:
+
+    print("\nPresiona 'q' para salir")
+    
+    while cap.isOpened():
+        ret, frame = cap.read()
+        if not ret:
+            break
+
+        frame = cv2.flip(frame, 1)
+        h, w, _ = frame.shape
         
         # Procesar con MediaPipe
-        rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         rgb.flags.writeable = False
         resultados = face_mesh.process(rgb)
         rgb.flags.writeable = True
-        
+
         if resultados.multi_face_landmarks:
             face_landmarks = resultados.multi_face_landmarks[0]
             
@@ -260,8 +270,12 @@ def procesar_imagen(img_paths):
             
             # Aplicar cada filtro en secuencia
             for filtro in filtros_cargados:
-                img = filtro.aplicar(img, landmarks_px)
+                frame = filtro.aplicar(frame, landmarks_px)
 
-        cv2.imwrite(f"tmp/filtro_{img_path[:-4]}.png", img)
-    
-procesar_imagen(["a.jpg","b.jpg"])
+        cv2.imshow("Multiples Filtros", frame)
+        
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+cap.release()
+cv2.destroyAllWindows()
