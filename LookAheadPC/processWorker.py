@@ -18,16 +18,14 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # --- Configuración de múltiples filtros ---
 FILTROS = {
-    "cabello_corto1": [
+    "corte": [
         {
             "type": "cabello",
             "imagen": os.path.join(BASE_DIR, "Filtros", "filtro_cabello_corto1.png"),
             "blend_mode": "multiply",
             "escala": 1.4,  # 1.4x el ancho de la cara
             "offset_y": -20  # 20 píxeles hacia arriba
-        }
-    ],
-    "cabello_largo1": [
+        },
         {
             "type": "cabello",
             "imagen": os.path.join(BASE_DIR, "Filtros", "filtro_cabello_largo1.png"),
@@ -36,39 +34,31 @@ FILTROS = {
             "offset_y": -20  # 20 píxeles hacia arriba
         }
     ],
-    "delineador1": [
+    "delineador": [
         {
             "type": "mask",
             "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_delineador1.png"),
             "csv_path": os.path.join(BASE_DIR, "Filtros", "points_eyes.csv"),
             "blend_mode": "normal"
-        }
-    ],
-    "delineador2": [
+        },
         {
             "type": "mask",
             "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_delineador2.png"),
             "csv_path": os.path.join(BASE_DIR, "Filtros", "points_eyes.csv"),
             "blend_mode": "normal"
-        }
-    ],
-    "delineador3": [
+        },
         {
             "type": "mask",
             "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_delineador3.png"),
             "csv_path": os.path.join(BASE_DIR, "Filtros", "points_eyes.csv"),
             "blend_mode": "normal"
-        }
-    ],
-    "delineador4": [
+        },
         {
             "type": "mask",
             "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_delineador4.png"),
             "csv_path": os.path.join(BASE_DIR, "Filtros", "points_eyes.csv"),
             "blend_mode": "normal"
-        }
-    ],
-    "delineador5": [
+        },
         {
             "type": "mask",
             "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_delineador5.png"),
@@ -76,39 +66,31 @@ FILTROS = {
             "blend_mode": "normal"
         }
     ],
-    "labial1": [
+    "labios": [
         {
             "type": "mask",
             "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_labial1.png"),
             "csv_path": os.path.join(BASE_DIR, "Filtros", "points_lips.csv"),
             "blend_mode": "soft_light"
-        }
-    ],
-    "labial2": [
+        },
         {
             "type": "mask",
             "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_labial2.png"),
             "csv_path": os.path.join(BASE_DIR, "Filtros", "points_lips.csv"),
             "blend_mode": "soft_light"
-        }
-    ],
-    "labial3": [
+        },
         {
             "type": "mask",
             "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_labial3.png"),
             "csv_path": os.path.join(BASE_DIR, "Filtros", "points_lips.csv"),
             "blend_mode": "soft_light"
-        }
-    ],
-    "labial4": [
+        },
         {
             "type": "mask",
             "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_labial4.png"),
             "csv_path": os.path.join(BASE_DIR, "Filtros", "points_lips.csv"),
             "blend_mode": "soft_light"
-        }
-    ],
-    "labial5": [
+        },
         {
             "type": "mask",
             "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_labial5.png"),
@@ -116,39 +98,31 @@ FILTROS = {
             "blend_mode": "soft_light"
         }
     ],
-    "sombra1": [
+    "sombras": [
         {
             "type": "mask",
             "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_sombra1.png"),
             "csv_path": os.path.join(BASE_DIR, "Filtros", "points_eyes.csv"),
             "blend_mode": "multiply"
-        }
-    ],
-    "sombra2": [
+        },
         {
             "type": "mask",
             "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_sombra2.png"),
             "csv_path": os.path.join(BASE_DIR, "Filtros", "points_eyes.csv"),
             "blend_mode": "multiply"
-        }
-    ],
-    "sombra3": [
+        },
         {
             "type": "mask",
             "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_sombra3.png"),
             "csv_path": os.path.join(BASE_DIR, "Filtros", "points_eyes.csv"),
             "blend_mode": "multiply"
-        }
-    ],
-    "sombra4": [
+        },
         {
             "type": "mask",
             "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_sombra4.png"),
             "csv_path": os.path.join(BASE_DIR, "Filtros", "points_eyes.csv"),
             "blend_mode": "multiply"
-        }
-    ],
-    "sombra5": [
+        },
         {
             "type": "mask",
             "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_sombra5.png"),
@@ -156,7 +130,21 @@ FILTROS = {
             "blend_mode": "multiply"
         }
     ],
-    "barba1": [
+    "rubor":[
+        {
+            "type": "mask",
+            "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_rubor1.png"),
+            "csv_path": os.path.join(BASE_DIR, "Filtros", "points_cheeks.csv"),
+            "blend_mode": "multiply"
+        },
+        {
+            "type": "mask",
+            "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_rubor2.png"),
+            "csv_path": os.path.join(BASE_DIR, "Filtros", "points_cheeks.csv"),
+            "blend_mode": "multiply"
+        }
+    ],
+    "vello": [
         {
             "type": "mask",
             "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_barba1.png"),
@@ -583,7 +571,7 @@ class FaceDetectionWorker(QObject):
 # ---------------------- Módulo de prueba ----------------------
 if __name__ == "__main__":
     # Prueba rápida en consola (sin Qt) para verificar que se cargan filtros y la cámara
-    print("Prueba rápida de integracionprueba.py")
+    print("Prueba rápida de processWorker.py")
     try:
         cargar_filtros(list(FILTROS.keys()))
         print("Filtros cargados:", [f.get_name() for f in filtros_mascaras + filtros_cabello])
