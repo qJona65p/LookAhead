@@ -20,11 +20,6 @@ FILTROS = [
         "mask_path": "Filtros/Filtro3.png",
         "csv_path": "Filtros/lips.csv",
         "blend_mode": "soft_light"  # Ideal para iluminación sutil
-    },
-    {
-        "mask_path": "Filtros/Filtro4.png",
-        "csv_path": "Filtros/jaw.csv",
-        "blend_mode": "multiply"
     }
 ]
 
@@ -268,4 +263,4 @@ def procesar_imagen(img_paths):
 
         cv2.imwrite(f"tmp/filtro_{img_path[:-4]}.png", img)
     
-procesar_imagen(["a.jpg","b.jpg"])
+procesar_imagen(["a.jpg","b.jpg", "c.jpg", "d.jpg", "e.jpg"])

@@ -471,7 +471,7 @@ class FaceDetectionWorker(QObject):
                         frame_out = frame.copy()
                 else:
                     frame_out = frame.copy()
-
+                
                 rgb_image = cv2.cvtColor(frame_out, cv2.COLOR_BGR2RGB)
                 h2, w2, ch = rgb_image.shape
                 bytes_per_line = ch * w2
