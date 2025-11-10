@@ -83,13 +83,14 @@ class FiltroFacial:
         if self.mask is None:
             raise FileNotFoundError(f"No se pudo cargar: {mask_path}")
 
-        # Cargar puntos (asumimos coordenadas absolutas en la imagen de la máscara)
         if not os.path.exists(csv_path):
             raise FileNotFoundError(f"No se pudo cargar CSV: {csv_path}")
         self.puntos = pd.read_csv(csv_path, header=None, names=["id", "x", "y"])
+        
         self.puntos['id'] = self.puntos['id'].astype(int)
+        print("a")
         self.src_pts = np.float32(self.puntos[['x', 'y']].values)
-
+        
         # triangulación Delaunay (indices)
         if len(self.src_pts) >= 3:
             self.triangulos = Delaunay(self.src_pts).simplices
@@ -523,3 +524,8 @@ if __name__ == "__main__":
                     break
         cap.release()
         cv2.destroyAllWindows()
+        
+__all__ = [
+    "FILTROS", "FaceDetectionWorker", "cargar_filtros",
+    "quitar_filtro", "aplicar_filtros", "filtros_por_categoria"
+]
