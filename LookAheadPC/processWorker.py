@@ -16,8 +16,7 @@ from PyQt5.QtGui import QImage
 # --- Ruta base del proyecto ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# --- Configuración de múltiples filtros ---
-FILTROS = {
+later = {
     "corte": [
         {
             "type": "cabello",
@@ -34,6 +33,10 @@ FILTROS = {
             "offset_y": -20  # 20 píxeles hacia arriba
         }
     ],
+}
+
+# --- Configuración de múltiples filtros ---
+FILTROS = {
     "delineador": [
         {
             "type": "mask",
@@ -178,7 +181,7 @@ class FiltroFacial:
         if len(self.src_pts) >= 3:
             self.triangulos = Delaunay(self.src_pts).simplices
         else:
-            self.triangulos = np.array([], dtype=np.int32)
+         self.triangulos = np.array([], dtype=np.int32)
 
         self.blend_mode = blend_mode
 
@@ -236,6 +239,7 @@ class FiltroFacial:
         warped_alpha = cv2.warpAffine(alpha1_rect, M, (w2, h2), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT)
         mask_tri = np.zeros((h2, w2), dtype=np.float32)
         cv2.fillConvexPoly(mask_tri, np.int32(t2_rect), 1.0, lineType=cv2.LINE_AA)
+        
         warped_alpha = warped_alpha * mask_tri
         warped_alpha = cv2.GaussianBlur(warped_alpha, (3, 3), 0)
 
@@ -546,11 +550,9 @@ class FaceDetectionWorker(QObject):
                         landmarks_px = np.array([[p.x * w, p.y * h] for p in lm.landmark]).astype(np.int32)
                     except Exception:
                         landmarks_px = None
+
                     if landmarks_px is not None and len(landmarks_px) > 0:
-                        try:
-                            frame_out = aplicar_filtros(frame.copy(), landmarks_px)
-                        except Exception:
-                            frame_out = frame.copy()
+                        frame_out = self.aplicar_filtros_seleccionados(frame.copy(), landmarks_px)
                     else:
                         frame_out = frame.copy()
                 else:
@@ -567,6 +569,41 @@ class FaceDetectionWorker(QObject):
 
     def stop_detection(self):
         self.running = False
+        
+    def aplicar_filtros_seleccionados(self, frame, landmarks_px):
+        """
+        Aplica solo los filtros seleccionados según self.filter_index_by_category.
+        """
+        for categoria in self.loaded_categories:
+            index = self.filter_index_by_category.get(categoria, -1)
+            if index < 0:
+                continue
+
+            config_list = FILTROS.get(categoria, [])
+            if 0 <= index < len(config_list):
+                config = config_list[index]
+                tipo = config["type"]
+
+                # Aplica solo el filtro activo según tipo e índice
+                if tipo == "mask":
+                    # Aplica solo el filtro 'index' de esta categoría en filtros_mascaras
+                    count = 0
+                    for f in filtros_mascaras:
+                        if f.get_name() == categoria:
+                            if count == index:
+                                frame = f.aplicar(frame, landmarks_px)
+                                break
+                            count += 1
+
+                elif tipo == "cabello":
+                    count = 0
+                    for f in filtros_cabello:
+                        if f.get_name() == categoria:
+                            if count == index:
+                                frame = f.aplicar(frame, landmarks_px)
+                                break
+                            count += 1
+        return frame
 
 # ---------------------- Módulo de prueba ----------------------
 if __name__ == "__main__":

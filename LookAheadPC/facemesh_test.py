@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import cv2
 import mediapipe as mp
 
@@ -107,7 +106,7 @@ with mp_face_mesh.FaceMesh(
         if cv2.waitKey(5) & 0xFF == 27:
             break
 cap.release()
-=======
+
 import cv2
 import mediapipe as mp
 
@@ -216,4 +215,3 @@ with mp_face_mesh.FaceMesh(
         if cv2.waitKey(5) & 0xFF == 27:
             break
 cap.release()
->>>>>>> c7c695683baf535c04d1f9b5dcf08e41effaa134
