@@ -27,9 +27,9 @@ Actualmente, LookAhead se encuentra en una fase temprana de desarrollo.
 La versión de escritorio funciona correctamente, pero aún se trabaja en la calidad visual de los filtros y en la futura versión móvil para Android.
 
 ## Autores
-Jonathan Martín Meléndez Mendoza
-Paula Araceli Ruiz Moreno
-Oscar Alfredo Martínez Gutiérrez
+- Jonathan Martín Meléndez Mendoza
+- Paula Araceli Ruiz Moreno
+- Oscar Alfredo Martínez Gutiérrez
 
 Asesor: Aurora Espinoza
 
