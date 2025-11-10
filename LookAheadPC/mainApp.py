@@ -127,11 +127,12 @@ class MainWindow(QWidget):
 
         # --- Vistas con filtro asociado ---
         self.view_delineador = self.create_subview("Delineador", "delineador", self.go_makeup)
-        self.view_labios = self.create_subview("Labios", "labios", self.go_makeup)
+        self.view_labios = self.create_subview("Labial", "labios", self.go_makeup)
         self.view_rubor = self.create_subview("Rubor", "rubor", self.go_makeup)
         self.view_sombras = self.create_subview("Sombras", "sombras", self.go_makeup)
         self.view_corte = self.create_subview("Corte", "corte", self.go_hair)
         self.view_tinte = self.create_subview("Tinte", "tinte", self.go_hair)
+        self.view_vello = self.create_subview("Vello", "vello", self.go_hair)
 
         self.view_home = self.create_home_view()
         self.view_makeup = self.create_makeup_view()
@@ -140,7 +141,7 @@ class MainWindow(QWidget):
         for v in [
             self.view_home, self.view_makeup, self.view_hair,
             self.view_delineador, self.view_sombras, self.view_rubor, self.view_labios,
-            self.view_corte, self.view_tinte
+            self.view_corte, self.view_tinte, self.view_vello
         ]:
             self.stack.addWidget(v)
 
@@ -217,10 +218,10 @@ class MainWindow(QWidget):
             QPushButton {{
                 border: none;
                 border-radius: {size//2}px;
-                background-color: rgba(100,100,100,0.2);  /* gris muy transparente */
+                background-color: rgba(100,100,100,0.2);
             }}
             QPushButton:pressed {{
-                background-color: rgba(100,100,100,0.4);  /* un poco más oscuro al presionar */
+                background-color: rgba(100,100,100,0.4);
             }}
         """)
         if tooltip:
@@ -236,7 +237,7 @@ class MainWindow(QWidget):
             ("icons/delineador.png", self.view_delineador, "Delineador"),
             ("icons/sombras.png", self.view_sombras, "Sombras"),
             ("icons/rubor.png", self.view_rubor, "Rubor"),
-            ("icons/labios.png", self.view_labios, "Labios")
+            ("icons/labial.png", self.view_labios, "Labial")
         ]
         
         for icon_path, target, tooltip in buttons:
@@ -251,15 +252,15 @@ class MainWindow(QWidget):
         view = BaseView(title="Cabello", back_callback=self.go_home, filtro_name=None)
         
         buttons = [
+            ("icons/tinte.png", self.view_tinte, "Tinte"),
             ("icons/corte.png", self.view_corte, "Corte"),
-            ("icons/tinte.png", self.view_tinte, "Tinte")
+            ("icons/vello.png", self.view_vello, "Vello Facial")
         ]
         
         for icon_path, target, tooltip in buttons:
             btn = MainWindow.create_icon_button(icon_path, size=80, tooltip=tooltip)
             btn.clicked.connect(lambda _, v=target: self.stack.setCurrentWidget(v))
             view.bottom_layout.addWidget(btn)
-        
         return view
 
     def create_subview(self, title, filtro_name, back_callback):

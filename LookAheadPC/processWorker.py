@@ -18,52 +18,149 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # --- Configuración de múltiples filtros ---
 FILTROS = {
-    "corte": [
+    "cabello_corto1": [
         {
             "type": "cabello",
-            "imagen": os.path.join(BASE_DIR, "Filtros", "cabello_corto.png"),
+            "imagen": os.path.join(BASE_DIR, "Filtros", "filtro_cabello_corto1.png"),
             "blend_mode": "multiply",
             "escala": 1.4,  # 1.4x el ancho de la cara
             "offset_y": -20  # 20 píxeles hacia arriba
         }
     ],
-    "sombras": [
+    "cabello_largo1": [
         {
-            "type": "mask",
-            "mask_path": os.path.join(BASE_DIR, "Filtros", "Filtro2.png"),
-            "csv_path": os.path.join(BASE_DIR, "Filtros", "eyes.csv"),
-            "blend_mode": "multiply"
+            "type": "cabello",
+            "imagen": os.path.join(BASE_DIR, "Filtros", "filtro_cabello_largo1.png"),
+            "blend_mode": "multiply",
+            "escala": 1.4,  # 1.4x el ancho de la cara
+            "offset_y": -20  # 20 píxeles hacia arriba
         }
     ],
-    "delineador": [
+    "delineador1": [
         {
             "type": "mask",
-            "mask_path": os.path.join(BASE_DIR, "Filtros", "Filtro1.png"),
-            "csv_path": os.path.join(BASE_DIR, "Filtros", "eyes.csv"),
+            "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_delineador1.png"),
+            "csv_path": os.path.join(BASE_DIR, "Filtros", "points_eyes.csv"),
             "blend_mode": "normal"
         }
     ],
-    "labios": [
+    "delineador2": [
         {
             "type": "mask",
-            "mask_path": os.path.join(BASE_DIR, "Filtros", "Filtro3.png"),
-            "csv_path": os.path.join(BASE_DIR, "Filtros", "lips.csv"),
+            "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_delineador2.png"),
+            "csv_path": os.path.join(BASE_DIR, "Filtros", "points_eyes.csv"),
+            "blend_mode": "normal"
+        }
+    ],
+    "delineador3": [
+        {
+            "type": "mask",
+            "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_delineador3.png"),
+            "csv_path": os.path.join(BASE_DIR, "Filtros", "points_eyes.csv"),
+            "blend_mode": "normal"
+        }
+    ],
+    "delineador4": [
+        {
+            "type": "mask",
+            "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_delineador4.png"),
+            "csv_path": os.path.join(BASE_DIR, "Filtros", "points_eyes.csv"),
+            "blend_mode": "normal"
+        }
+    ],
+    "delineador5": [
+        {
+            "type": "mask",
+            "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_delineador5.png"),
+            "csv_path": os.path.join(BASE_DIR, "Filtros", "points_eyes.csv"),
+            "blend_mode": "normal"
+        }
+    ],
+    "labial1": [
+        {
+            "type": "mask",
+            "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_labial1.png"),
+            "csv_path": os.path.join(BASE_DIR, "Filtros", "points_lips.csv"),
             "blend_mode": "soft_light"
         }
     ],
-    "tinte": [
+    "labial2": [
         {
             "type": "mask",
-            "mask_path": os.path.join(BASE_DIR, "Filtros", "Filtro4.png"),
-            "csv_path": os.path.join(BASE_DIR, "Filtros", "jaw.csv"),
+            "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_labial2.png"),
+            "csv_path": os.path.join(BASE_DIR, "Filtros", "points_lips.csv"),
+            "blend_mode": "soft_light"
+        }
+    ],
+    "labial3": [
+        {
+            "type": "mask",
+            "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_labial3.png"),
+            "csv_path": os.path.join(BASE_DIR, "Filtros", "points_lips.csv"),
+            "blend_mode": "soft_light"
+        }
+    ],
+    "labial4": [
+        {
+            "type": "mask",
+            "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_labial4.png"),
+            "csv_path": os.path.join(BASE_DIR, "Filtros", "points_lips.csv"),
+            "blend_mode": "soft_light"
+        }
+    ],
+    "labial5": [
+        {
+            "type": "mask",
+            "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_labial5.png"),
+            "csv_path": os.path.join(BASE_DIR, "Filtros", "points_lips.csv"),
+            "blend_mode": "soft_light"
+        }
+    ],
+    "sombra1": [
+        {
+            "type": "mask",
+            "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_sombra1.png"),
+            "csv_path": os.path.join(BASE_DIR, "Filtros", "points_eyes.csv"),
             "blend_mode": "multiply"
         }
     ],
-    "rubor": [
+    "sombra2": [
         {
             "type": "mask",
-            "mask_path": os.path.join(BASE_DIR, "Filtros", "Filtro4.png"),
-            "csv_path": os.path.join(BASE_DIR, "Filtros", "jaw.csv"),
+            "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_sombra2.png"),
+            "csv_path": os.path.join(BASE_DIR, "Filtros", "points_eyes.csv"),
+            "blend_mode": "multiply"
+        }
+    ],
+    "sombra3": [
+        {
+            "type": "mask",
+            "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_sombra3.png"),
+            "csv_path": os.path.join(BASE_DIR, "Filtros", "points_eyes.csv"),
+            "blend_mode": "multiply"
+        }
+    ],
+    "sombra4": [
+        {
+            "type": "mask",
+            "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_sombra4.png"),
+            "csv_path": os.path.join(BASE_DIR, "Filtros", "points_eyes.csv"),
+            "blend_mode": "multiply"
+        }
+    ],
+    "sombra5": [
+        {
+            "type": "mask",
+            "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_sombra5.png"),
+            "csv_path": os.path.join(BASE_DIR, "Filtros", "points_eyes.csv"),
+            "blend_mode": "multiply"
+        }
+    ],
+    "barba1": [
+        {
+            "type": "mask",
+            "mask_path": os.path.join(BASE_DIR, "Filtros", "filtro_barba1.png"),
+            "csv_path": os.path.join(BASE_DIR, "Filtros", "points_jaw.csv"),
             "blend_mode": "multiply"
         }
     ]
@@ -86,9 +183,7 @@ class FiltroFacial:
         if not os.path.exists(csv_path):
             raise FileNotFoundError(f"No se pudo cargar CSV: {csv_path}")
         self.puntos = pd.read_csv(csv_path, header=None, names=["id", "x", "y"])
-        
         self.puntos['id'] = self.puntos['id'].astype(int)
-        print("a")
         self.src_pts = np.float32(self.puntos[['x', 'y']].values)
         
         # triangulación Delaunay (indices)
